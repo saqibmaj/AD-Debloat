@@ -66,6 +66,6 @@ Use at your own risk. Test in a non-production environment first.
 ## 📥 Installation  
 ```powershell
 # Clone the repository  
-git clone https://github.com/your-repo/AD-WinDebloat.git  
+git clone https://github.com/saqibmaj/AD-winDebloat.git
 cd AD-WinDebloat  
 ```
