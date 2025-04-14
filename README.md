@@ -1,71 +1,64 @@
-# AD-WinDebloat 🚀  
-**Automated Windows Debloating & Optimization for Active Directory**  
+## 🚀 AD-Debloat
 
-A PowerShell script to remove bloatware, disable telemetry, and optimize Windows 10/11 across Active Directory domains. Designed for sysadmins managing enterprise environments.
+`AD-Debloat` is a powerful PowerShell script designed to **automate the removal of bloatware** and unnecessary Windows components from machines **joined to an Active Directory (AD) domain**. It supports targeting:
 
----
-
-## 🔥 Features  
-- **Bloatware Removal**  
-  Uninstalls 50+ preinstalled apps (Candy Crush, Xbox, OneDrive, etc.) for all users.  
-- **Privacy Hardening**  
-  Disables Cortana, telemetry, ads, and Windows Spotlight.  
-- **AD Scalability**  
-  Target single machines, OUs, or all domain-joined computers.  
-- **Safety First**  
-  `-WhatIf` support and transcript logging for audits.  
+- 🖥️ Specific computers
+- 🗂️ Organizational Units (OUs)
+- 🌐 All domain-joined computers
 
 ---
 
-## 🛠️ Usage  
+## 📦 Features
 
-### **Basic Commands**  
+✨ **Highlights:**
+
+- 🧽 Debloats Windows by removing unwanted built-in apps  
+- 📁 Supports custom app list via editable `Apps.txt`  
+- 🧾 Imports `.reg` files to apply registry tweaks  
+- 📋 Generates logs with timestamps for full traceability  
+- 🧪 Supports `-WhatIf` mode for safe testing  
+- 💪 Designed for AD environments and remote execution  
+
+---
+
+## 🧰 Requirements
+
+Before running the script, ensure the following prerequisites:
+
+- ✅ PowerShell 5.1 or later  
+- ✅ Active Directory module  
+- ✅ Administrator privileges  
+- ✅ Domain-joined Windows machine(s)  
+
+---
+
+## 📝 Editable Files
+
+📄 **Apps.txt**  
+This file contains a list of app names to remove.  
+You can **edit this file** to customize the apps that get uninstalled. One app name per line.
+
+📂 **Scripts/**  
+This folder should contain your `.reg` files. They are imported automatically on each target machine to apply registry tweaks.
+
+---
+
+## 📋 Parameters
+
+| Parameter             | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `-ComputerName`       | Target a specific computer                                                 |
+| `-OU`                 | Target all computers in a specific OU                                      |
+| `-AllDomainComputers` | Target **all** domain-joined machines                                      |
+| `-WhatIf`             | Show what would happen without making any changes                         |
+| `-Force`              | Reserved for future use                                                    |
+| `-AppsFile`           | Path to the file listing apps to remove (default: `Apps.txt`)              |
+| `-RegFilesDirectory`  | Path to folder containing `.reg` files (default: `.\Scripts`)              |
+
+---
+
+## 🔧 Usage Examples
+
+### 1. Target a specific computer:
 ```powershell
-# Debloat a single computer  
-.\AD-DebloatWindows.ps1 -ComputerName "PC01"  
-
-# Debloat all computers in an OU  
-.\AD-DebloatWindows.ps1 -OU "OU=Workstations,DC=domain,DC=com"  
-
-# Dry-run (preview changes)  
-.\AD-DebloatWindows.ps1 -AllDomainComputers -WhatIf  
-```
-
-### **Parameters**  
-| Parameter           | Description                          |  
-|---------------------|--------------------------------------|  
-| `-ComputerName`     | Target a single machine.            |  
-| `-OU`               | Target all computers in an OU.      |  
-| `-AllDomainComputers` | Debloat every domain-joined PC.   |  
-| `-Force`            | Aggressive cleanup (e.g., OneDrive).|  
-| `-WhatIf`           | Preview changes without execution.  |  
-
----
-
-## 📋 Requirements  
-- **PowerShell 5.1+** (Windows 10/11, Server 2016+)  
-- **Active Directory Module** (`RSAT-AD-PowerShell`)  
-- **Admin Rights** on target machines  
-
----
-
-## 📜 Logging  
-Script generates logs at:  
-`C:\Windows\Temp\Debloat_<TIMESTAMP>.log`  
-
----
-
-## ⚠️ Disclaimer  
-Use at your own risk. Test in a non-production environment first.  
-**Not recommended for:**  
-- Systems requiring Microsoft Store apps  
-- Environments with strict compliance policies (e.g., DISA STIG)  
-
----
-
-## 📥 Installation  
-```powershell
-# Clone the repository  
-git clone https://github.com/saqibmaj/AD-winDebloat.git
-cd AD-WinDebloat  
-```
+.\AD-DebloatWindows.ps1 -ComputerName "Workstation01"
