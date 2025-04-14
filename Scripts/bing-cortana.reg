@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+; Disable bing in search
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+
+; Disable cortana in search
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowCortana"=dword:00000000
+"CortanaConsent"=dword:00000000
