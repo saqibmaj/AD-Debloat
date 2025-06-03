@@ -1,6 +1,6 @@
-## 🚀 AD-Debloat
+## 🚀 DomainLite
 
-`AD-Debloat` is a powerful PowerShell script designed to **automate the removal of bloatware** and unnecessary Windows components from machines **joined to an Active Directory (AD) domain**. It supports targeting:
+`DomainLite` is a powerful PowerShell script designed to **automate the removal of bloatware** and unnecessary Windows components from machines **joined to an Active Directory (AD) domain**. It supports targeting:
 
 - 🖥️ Specific computers
 - 🗂️ Organizational Units (OUs)
